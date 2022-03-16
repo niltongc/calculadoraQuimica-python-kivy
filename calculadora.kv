@@ -1,0 +1,162 @@
+<Gerenciador>:
+
+    Menu:
+        name: 'menu'
+    Pressao:
+        name: 'pressao'
+
+<Menu>:
+    BoxLayout:
+        orientation:'vertical'                
+        Button:
+            text:'Pressão'
+            on_release:app.root.current = 'pressao'
+        Button:
+            text:'Volume'
+        Button:
+            text:'nº mol'
+        Button:
+            text:'Temperatura'
+
+<Pressao>:
+    BoxLayout:
+        orientation:'vertical'
+        GridLayout:
+            cols:12
+            row:1
+            Label:
+            BoxLayout:
+                orientation:'vertical'
+                Label:
+                    text:'n° de mol'
+                BoxLayout:
+                    TextInput:
+                        id:ptin
+                        multiline:False
+                        input_type: 'number'
+                        input_filter:'float'
+                    ScrollView:
+                        BoxLayout:
+                            orientation:'vertical'
+                            #ToggleButton:
+                                #text:'g'
+                                #group:'p1'
+                            ToggleButton:
+                                id:ptbm
+                                text:'mol'
+                                group:'p1'
+                                #state:'down'
+                            ToggleButton:
+                                id:ptbmm
+                                text:'mmol'
+                                group:'p1'
+            BoxLayout:
+                orientation:'vertical'
+                Label:
+                Label:
+                    text:'X'
+            BoxLayout:
+                orientation:'vertical'
+                Label:
+                    text:'Constante'
+                Label:
+                    text:'R'                
+            BoxLayout:
+                orientation:'vertical'
+                Label:
+                Label:
+                    text:'X'
+            BoxLayout:
+                orientation:'vertical'
+                Label:
+                    text:'Temperatura'
+                BoxLayout:     
+                    TextInput:
+                        id:ptit
+                        multiline:False
+                        input_type: 'number'                    
+                    ScrollView:
+                        BoxLayout:
+                            orientation:'vertical'
+                            ToggleButton:
+                                id:ptbk
+                                text:'K'
+                                group:'p2'
+                            ToggleButton:
+                                id:ptbc
+                                text:'°C'
+                                group:'p2'
+                            ToggleButton:
+                                id:ptbf
+                                text:'F'
+                                group:'p2'
+        BoxLayout:
+            BoxLayout:
+                size_hint_x:None
+                width:300
+                Label:
+                    text:'P=(nRT)÷V='
+            BoxLayout:
+                pos_hint:{'center_x':.5,'center_y':1}
+                BoxLayout:
+                    canvas:
+                        Color:
+                            rgba:1,1,1,1
+                        Rectangle:
+                            size: 3000,1
+                            pos:self.pos
+                Label:
+        BoxLayout:
+            GridLayout:
+                cols:6
+                row:1
+                Label:
+                Label:
+                Label:
+                BoxLayout:
+                    orientation:'vertical'
+                    Label:
+                        text:'Volume'
+                    BoxLayout:
+                        TextInput:
+                            id:ptiv
+                            multiline:False
+                            input_type:'number'
+                            input_filter:'float'
+                        ScrollView:
+                            BoxLayout:
+                                orientation:'vertical'
+                                ToggleButton:
+                                    id:ptbl
+                                    text:'L'
+                                    group:'p3'
+                                ToggleButton:
+                                    id:ptbm3
+                                    text:'m3'
+                                    group:'p3'
+                Label:
+                Label:
+        BoxLayout:
+            GridLayout:
+                cols:6
+                row:1
+                Label:
+                Label:
+                Label:
+                Button:
+                    text:'Calcular'
+                    on_release: root.pcalc() #plr.text=str(int(pt1.text+pt2.text))
+                Label:
+                Label:
+        BoxLayout:
+            GridLayout:
+                cols:6
+                Label:
+                Label:
+                Label:    
+                Label:
+                    text:'Resultado'
+                    id:plr
+                Label:
+                Label:
+        BoxLayout:
